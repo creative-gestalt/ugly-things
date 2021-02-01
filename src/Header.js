@@ -2,7 +2,7 @@ import React from "react"
 import {UglyThingsContextConsumer} from "./uglyThingsContext";
 
 function InputBox(props) {
-    return <input defaultValue={props.value} onChange={props.change} required={true} className='input-box' type='text' name={props.name}
+    return <input defaultValue={props.value} required={true} className='input-box' type='text' name={props.name}
                   placeholder={props.title}/>;
 }
 
