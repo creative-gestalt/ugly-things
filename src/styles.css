@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 20px;
+}
+
+button {
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#header-edit {
+    height: 10px;
+    padding: 10px 0 0;
+    text-align: center;
+}
+
+#submit {
+    width: 200px;
+    height: 30px;
+}
+
+.header-box {
+    margin: auto;
+    width: 100%;
+    height: 180px;
+    background-color: cadetblue;
+}
+
+.form-container {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.submit-container {
+    margin: auto;
+    text-align: center;
+}
+
+.input-box {
+    margin: 25px 10px;
+}
+
+.card {
+    width: 300px;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.modify-container {
+    width: inherit;
+    position: absolute;
+    text-align: right;
+}
+
+.edit-post-icon {
+}
+
+.delete-post-icon {
+}
+
+.items {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.items .item {
+    flex: 1 0 33%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+}
+
+.ugly-images {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.ugly-title {
+    font-weight: 900;
+    text-align: center;
+}
+
+.ugly-description {
+    padding-left: 10px;
+    text-align: left;
+}
+
+.comments {
+    padding: 10px;
+    text-align: left;
+}
+
+.comment-form-container {
+    padding-bottom: 15px;
+    display: flex;
+}
+
+.comment-box {
+    flex: 1;
+    margin: auto;
+    height: 30px;
+}
+
+.delete-icon {
+    float: right;
+    padding-right: 10px;
+    cursor: pointer;
+}
