@@ -9,12 +9,7 @@ class UglyThingsContextProvider extends Component {
         super(props);
         this.state = {
             uglyItems: [],
-            currentItem: {
-                id: null,
-                title: '',
-                imgUrl: '',
-                description: ''
-            },
+            currentItem: {id: null, title: '', imgUrl: '', description: ''},
             isEditing: false
         };
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,6 +21,7 @@ class UglyThingsContextProvider extends Component {
     }
 
     async componentDidMount() {
+        // TODO: depending on api, we will have to iterate and add id + comments key value pairs (id = index, comments are [])
         this.setState({
             uglyItems: items
         })
@@ -40,11 +36,11 @@ class UglyThingsContextProvider extends Component {
 
     async handleSubmit(event, currentItem) {
         event.preventDefault();
-        // const payload = {
-        //     title: event.target[0].value,
-        //     imgUrl: event.target[1].value,
-        //     description: event.target[2].value
-        // }
+        const payload = {
+            title: event.target[0].value,
+            imgUrl: event.target[1].value,
+            description: event.target[2].value
+        }
         if (currentItem.id !== null) {
             // UPDATE
             const updatedList = this.state.uglyItems.map((item) =>
@@ -59,16 +55,10 @@ class UglyThingsContextProvider extends Component {
             )
             this.setState({
                 uglyItems: updatedList,
-                currentItem: {
-                    id: null,
-                    title: '',
-                    imgUrl: '',
-                    description: '',
-                    comments: []
-                },
+                currentItem: {id: null, title: '', imgUrl: '', description: '', comments: []},
                 isEditing: false
             })
-            event.target.reset()
+            console.log(payload)
             // await fetch(`https://api.vschool.io/${name}/thing/${id}`, {
             //     method: 'PUT',
             //     headers: {
@@ -78,22 +68,16 @@ class UglyThingsContextProvider extends Component {
             // })
         } else {
             // NEW
-            currentItem.id = this.state.uglyItems.length + 1
-            currentItem.comments = []
             const uglyItems = this.state.uglyItems
+            currentItem.id = uglyItems.length + 1
+            currentItem.comments = []
             uglyItems.push(currentItem)
             this.setState({
                 uglyItems: uglyItems,
-                currentItem: {
-                    id: null,
-                    title: '',
-                    imgUrl: '',
-                    description: '',
-                    comments: []
-                },
+                currentItem: {id: null, title: '', imgUrl: '', description: '', comments: []},
                 isEditing: false
             })
-            event.target.reset()
+            console.log(payload)
             // await fetch(`https://api.vschool.io/${name}/thing`, {
             //     method: 'POST',
             //     headers: {
@@ -102,6 +86,7 @@ class UglyThingsContextProvider extends Component {
             //     body: payload
             // }).catch((e) => console.log(e))
         }
+        event.target.reset()
     }
 
     handleInputChange(event, currentItem) {
@@ -149,12 +134,7 @@ class UglyThingsContextProvider extends Component {
     handleCancel(event) {
         this.setState({
             isEditing: false,
-            currentItem: {
-                id: null,
-                title: '',
-                imgUrl: '',
-                description: ''
-            }
+            currentItem: {id: null, title: '', imgUrl: '', description: '', comments: []}
         })
     }
 

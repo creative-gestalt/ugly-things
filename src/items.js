@@ -1,3 +1,4 @@
+// mock items
 export const items = [
     {
         id: 1,

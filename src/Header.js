@@ -1,5 +1,5 @@
-import React from "react"
-import {UglyThingsContextConsumer} from "./uglyThingsContext";
+import React from 'react'
+import {UglyThingsContextConsumer} from './uglyThingsContext';
 
 function InputBox(props) {
     return <input defaultValue={props.value} required={true} className='input-box' type='text' name={props.name}
@@ -19,15 +19,11 @@ function Header(props) {
                         <InputBox value={context.currentItem.imgUrl} title='Img URL' name='imgUrl'/>
                         <InputBox value={context.currentItem.description} title='Description' name='description'/>
                         <div className='submit-container'>
-                            {!context.isEditing ? <button id='submit'>Submit</button> : null}
+                            {context.isEditing
+                                ? <div><button onClick={context.handleCancel}>Cancel</button><button>Submit</button></div>
+                                : <button id='submit'>Submit</button>
+                            }
                         </div>
-                        {context.isEditing
-                            ? <div className='submit-container'>
-                                <button onClick={context.handleCancel}>Cancel</button>
-                                <button>Submit</button>
-                            </div>
-                            : null
-                        }
                     </form>
                 </div>
             )}

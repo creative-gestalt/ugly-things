@@ -50,20 +50,6 @@ function Post(props) {
     )
 }
 
-function Comments(props) {
-    return (
-        <ul className='comments'>
-            <CommentInputBox id={props.id} context={props.context}/>
-            {props.comments.map((comment, index) =>
-                <li key={index}>
-                    {comment}
-                    <FaTrash className='delete-icon' size={11} onClick={(e) => props.context.handleComment({id: props.id, event: e, add: false})}/>
-                </li>
-            )}
-        </ul>
-    )
-}
-
 function CommentInputBox(props) {
     return (
         <form className='comment-form-container' onSubmit={(event) =>
@@ -79,6 +65,24 @@ function CommentInputBox(props) {
                 <FaCheck />
             </button>
         </form>
+    )
+}
+
+function Comments(props) {
+    return (
+        <ul className='comments'>
+            <CommentInputBox id={props.id} context={props.context}/>
+            {props.comments.map((comment, index) =>
+                <li className='comment' key={index}>
+                    <span className='comment-text'>{comment.length > 45 ? comment.slice(0, 45) + '...' : comment}</span>
+                    <FaTrash
+                        className='delete-icon'
+                        size={11}
+                        onClick={(e) => props.context.handleComment({id: props.id, event: e, add: false})}
+                    />
+                </li>
+            )}
+        </ul>
     )
 }
 
